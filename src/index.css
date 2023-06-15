@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(90deg, #a8d0e6, #f9e6e6);
+  background-size: auto;
+  font-family: 'Karla, sans serif';
+  margin: 0;
+  height: 100vh;
+}
+
+.textBox {
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
+
+button:active {
+  animation: highlightDiv 0.1s;
+}
+
+@keyframes highlightDiv {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
