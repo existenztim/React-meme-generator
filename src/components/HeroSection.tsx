@@ -31,34 +31,35 @@ const HeroSection = () => {
     const inputName = e.target.id;
     const inputNumber = inputName.replace('input', '');
     const index = Number(inputNumber) - 1;
-    if (targetText == placeHolderList) {
-      setTargetText(prevTargetText => {
-        const updatedTargetText = [...prevTargetText];
+    setTargetText(prevTargetText => {
+      const updatedTargetText = [...prevTargetText];
+      if (targetText === placeHolderList) {
         updatedTargetText[index] = `placeholder${inputNumber}`;
-        return updatedTargetText;
-      });
-    } else {
-      setTargetText(prevTargetText => {
-        const updatedTargetText = [...prevTargetText];
+      } else {
         updatedTargetText[index] = e.target.value;
-        return updatedTargetText;
-      });
-    }
+      }
+      return updatedTargetText;
+    });
   };
 
   return (
     <>
-      {/**<p>boxcount : {image.box_count}</p> only during development */}
+      <header className="fixed right-0 top-0 z-10 m-0 w-full ">
+        <NavBar />
+
+        <GetImgButton handleClick={getImage} />
+      </header>   
+
       <main className="mt-10 flex flex-col">
-        <header className="fixed right-0 top-0 z-10 m-0 w-full bg-slate-400">
-          <NavBar />
-          {image.url && <TextInputs boxCount={image.box_count} handleClick={addQuote} />}
-          <GetImgButton handleClick={getImage} />
-        </header>
-        <div className="mt-40">
-          {image.url && <ImageBox boxCount={image.box_count} imageUrl={image.url} targetText={targetText} />}
-        </div>
+        {image.url &&  
+        <div className=" mt-4">
+          <ImageBox boxCount={image.box_count} imageUrl={image.url} targetText={targetText} />
+          <TextInputs boxCount={image.box_count} handleClick={addQuote}/>  
+        </div>}
       </main>
+      <footer className="fixed right-0 bottom-0  m-0 w-full justify-between bg-gradient-to-r from-pink-500 to-purple-500 p-5 text-slate-50">
+      <p className="alfa text-xl font-semibold">Powered by <span>Imgflip API</span></p>
+      </footer>
     </>
   );
 };

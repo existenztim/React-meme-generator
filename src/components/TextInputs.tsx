@@ -20,9 +20,8 @@ const TextInputs = (props: { boxCount: number; handleClick: (e: ChangeEvent<HTML
   }
 
   return (
-    <div>
+    <div className=" mb-32">
       {inputs}
-      <p className="m-3 font-sans">You may drag the text fields to the position you wish.</p>
     </div>
   );
 };
