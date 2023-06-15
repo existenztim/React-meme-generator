@@ -14,12 +14,22 @@ body {
   height: 100vh;
 }
 
-.textBox, h1 {
+.textBox, h1, .newImg {
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
 
+button:hover {
+ color: black;
+}
 button:active {
   animation: highlightDiv 0.1s;
+}
+.logo {
+  animation: highlightDiv 1.1s infinite;
+}
+
+#image-box {
+  animation: highlightDiv 1.1s;
 }
 
 @keyframes highlightDiv {
@@ -28,8 +38,23 @@ button:active {
   }
   50% {
     transform: scale(1.1);
+    color: black;
   }
   100% {
     transform: scale(1);
+    color: white;
   }
+}
+
+@keyframes hoverAni {
+  0% {
+    color: white;
+  }
+  50% {
+    color: gray;
+  }
+  100% {
+    color: black;
+  }
+
 }

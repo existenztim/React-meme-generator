@@ -31,6 +31,7 @@ const HeroSection = () => {
     const inputName = e.target.id;
     const inputNumber = inputName.replace('input', '');
     const index = Number(inputNumber) - 1;
+    
     setTargetText(prevTargetText => {
       const updatedTargetText = [...prevTargetText];
       if (targetText === placeHolderList) {
@@ -44,7 +45,6 @@ const HeroSection = () => {
 
   return (
     <>
-      {/**<p>boxcount : {image.box_count}</p> only during development */}      
       <header className="fixed right-0 top-0 z-10 m-0 w-full">
         <NavBar />
         <GetImgButton handleClick={getImage} />
@@ -57,7 +57,7 @@ const HeroSection = () => {
           <TextInputs boxCount={image.box_count} handleClick={addQuote}/>  
         </div>}
       </main>
-      <footer className="fixed right-0 bottom-0  m-0 w-full justify-between bg-gradient-to-r from-purple-500 to-pink-500 p-5 text-slate-50">
+      <footer className="fixed right-0 bottom-0  m-0 w-full justify-between bg-gradient-to-r from-pink-500 to-purple-500 p-5 text-slate-50">
       <p className=" text-xl font-semibold">Powered by <span>Imgflip API</span></p>
       </footer>
     </>
