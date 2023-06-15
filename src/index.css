@@ -14,7 +14,7 @@ body {
   height: 100vh;
 }
 
-.textBox {
+.textBox, h1 {
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
 

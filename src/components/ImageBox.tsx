@@ -1,18 +1,19 @@
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
 import Draggable from 'react-draggable';
+import PanelButtons from './PanelButtons';
 
 const ImageBox = (props: { boxCount: number; imageUrl: string; targetText: string[] }) => {
   const pElements = [];
-  const [textSize, setTextSize] = useState(4);
-  for (let i = 0; i < props.boxCount; i++) {
+  const [textSize, setTextSize] = useState(32);
+  for (let i = 1; i < props.boxCount + 1; i++) { //start at 1 because of styling issues
     pElements.push(
-      <Draggable bounds="parent" key={i}>
+      <Draggable bounds="parent" key={i} >
         <p
-          className="textBox absolute cursor-move from-blue-500 to-transparent  p-9 font-sans text-white active:rounded-3xl active:border-2 active:border-black active:bg-gradient-to-b"
-          style={{ top: `${i * 8}rem`, fontSize: `${textSize}vw` }}
+          className="textBox absolute cursor-move from-blue-500 to-transparent  p-0 font-sans text-white active:rounded-3xl active:border-2 active:border-black active:bg-gradient-to-b"
+          style={{ top: `${i * 3}rem`, fontSize: `${textSize}px` }}
         >
-          {props.targetText[i]}
+          {props.targetText[i-1]}
         </p>
       </Draggable>
     );
@@ -30,13 +31,11 @@ const ImageBox = (props: { boxCount: number; imageUrl: string; targetText: strin
   };
 
   const changeTextSize = (operator: string) => {
-    console.log(textSize);
-
     setTextSize(prevSize => {
-      if (operator === 'increase' && prevSize < 5) {
-        return prevSize + 1;
-      } else if (operator === 'decrease' && prevSize > 2) {
-        return prevSize - 1;
+      if (operator === 'increase' && prevSize < 60) {
+        return prevSize + 2;
+      } else if (operator === 'decrease' && prevSize > 12) {
+        return prevSize - 2;
       }
       return prevSize;
     });
@@ -44,28 +43,12 @@ const ImageBox = (props: { boxCount: number; imageUrl: string; targetText: strin
 
   return (
     <section className="flex flex-col">
-      <div className="fixed bottom-2 right-0 z-10 m-0 flex w-full justify-center gap-1">
-        <button
-          onClick={() => changeTextSize('decrease')}
-          className="rounded-xl bg-purple-500 p-3 font-sans font-extrabold text-zinc-100"
-        >
-          Decrease text size
-        </button>
-        <button
-          onClick={() => changeTextSize('increase')}
-          className="rounded-xl bg-pink-500 p-3 font-sans font-extrabold text-zinc-100"
-        >
-          Increase text size
-        </button>
-        <button className="rounded-xl bg-green-500 p-3 font-sans font-extrabold text-zinc-100" onClick={captureElement}>
-          Capture Image
-        </button>
-      </div>
+    <PanelButtons changeTextSize={changeTextSize} captureElement={captureElement}/>
       <div
         id="image-box"
-        className=" relative mx-auto flex justify-center justify-items-stretch overflow-clip p-4 text-center"
+        className="relative m-auto flex justify-center  overflow-clip p-4 text-center"
       >
-        <img className="border-2 border-black bg-slate-500 p-3" src={props.imageUrl} crossOrigin="anonymous" />
+        <img className="border-2 border-black bg-slate-500 p-3 max-w-[600px] w-full" src={props.imageUrl} crossOrigin="anonymous" />
         {pElements}
       </div>
     </section>
