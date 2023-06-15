@@ -1,6 +1,8 @@
+import { AiFillCamera } from "react-icons/ai";
+
 const PanelButtons = (props: {changeTextSize: (operator: string) => void, captureElement: () => void}) => {
     return(
-        <div className="mt-20 absolute right-0 z-10 m-0 flex w-full justify-center gap-1 text-sm">
+        <div className="top-44 fixed right-0 z-10 m-0 flex w-full justify-center gap-1 text-sm bg-slate-100">
             <div className="gap-2 p-1 border-2 border-gray-950 rounded-xl bg-green-500 flex items-center">
             <button
             onClick={() => props.changeTextSize('decrease')}
@@ -18,8 +20,9 @@ const PanelButtons = (props: {changeTextSize: (operator: string) => void, captur
             +
             </button>
             </div>
-        <button className="border-2 border-gray-950 rounded-xl bg-green-500 p-3 font-sans font-extrabold text-zinc-100" onClick={props.captureElement}>
+        <button className="flex  justify-center items-center border-2 border-gray-950 rounded-xl bg-green-500 p-3 font-sans font-extrabold text-zinc-100" onClick={props.captureElement}>
           Capture Image
+          <AiFillCamera className=" text-2xl m-1"/>
         </button>
       </div>
     )

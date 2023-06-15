@@ -14,10 +14,14 @@ body {
   height: 100vh;
 }
 
-.textBox, h1, .newImg {
+.textBox {
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
 }
-
+h1, .alfa {
+  font-family: "Alfa Slab One";
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+}
 button:hover {
  color: black;
 }

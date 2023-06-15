@@ -46,7 +46,7 @@ const ImageBox = (props: { boxCount: number; imageUrl: string; targetText: strin
     <PanelButtons changeTextSize={changeTextSize} captureElement={captureElement}/>
       <div
         id="image-box"
-        className="relative m-auto flex justify-center  overflow-clip py-10 mt-20 text-center"
+        className="relative m-auto flex justify-center  overflow-clip py-10 mt-28 text-center"
       >
         <img className="border-2 border-black bg-slate-500 p-3 max-w-[600px] w-full" src={props.imageUrl} crossOrigin="anonymous" />
         {pElements}
